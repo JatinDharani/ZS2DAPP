@@ -7,7 +7,7 @@ sap.ui.define([
 
 	
 		onInit: function () {
-			this._checkUserDefaults();	
+			this._showMaitainDefaultDialog(false);	
 		 	this.getOwnerComponent().getModel().metadataLoaded().then(function(){
 		this._checkUserDefaults();		
 			}.bind(this));
@@ -19,7 +19,8 @@ sap.ui.define([
 		 var oModel = this.getOwnerComponent().getModel();
 		 	var oData = {"ShipPoint":this.getView().getModel("clientModel").getProperty("/ShipPoint"),
 		 		"DeliveryDate":this.getView().getModel("clientModel").getProperty("/DeliveryDate"),
-		 		"DefaultPrinter":this.getView().getModel("clientModel").getProperty("/DefaultPrinter")
+		 		"DefaultPrinter":this.getView().getModel("clientModel").getProperty("/DefaultPrinter"),
+		 		"UserId":"DUMMY"
 		 	};
 		 		var oCreateDefaultsPromise = this._prepareODataPromise("create","/UserDefaultSet",oData,null,oModel);
 		 }
@@ -35,7 +36,7 @@ sap.ui.define([
 		},
 		 _checkUserDefaults:function(){
         	var oModel = this.getOwnerComponent().getModel();
-        	var oCheckUserDefaultsPromise = this._prepareODataPromise("read","/UserDefaultSet(UserId='')",null,null,oModel);
+        	var oCheckUserDefaultsPromise = this._prepareODataPromise("read","/UserDefaultSet(UserId='DUMMY')",null,null,oModel);
         	oCheckUserDefaultsPromise.then(function(response){
         	var bUserDefaultMaintained = this._validateUserDefault(response.data);
         	this._showMaitainDefaultDialog(bUserDefaultMaintained);
@@ -45,8 +46,8 @@ sap.ui.define([
         _showMaitainDefaultDialog:function(bUserDefaultMaintained){
         	if(bUserDefaultMaintained) return;
         		if (!this.userDialog) {
-				this.pDialog = this.loadFragment({
-					name: "LPI.ZS2D_LPI_PICK_SHIP.ZS2D_LPI_PICK_SHIP.view.fragments.userDefaultForm"
+				this.userDialog = this.loadFragment({
+					name: "LPI.ZS2D_LPI_PICK_SHIP.ZS2D_LPI_PICK_SHIP.view.fragements.userDefaultForm"
 				});
 			}
 
