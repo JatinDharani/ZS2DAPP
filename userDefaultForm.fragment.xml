@@ -17,7 +17,7 @@
 			</form:SimpleForm>
 		</content>
 		<buttons>
-			<Button id="buttonConfirmDetails"  tooltip="Confirm" press="onConfirmDetails" type="Accept"/>
+			<Button id="buttonConfirmDetails"  text="Confirm" press="onConfirmDetails" type="Accept"/>
 		</buttons>
 	</Dialog>
 </core:FragmentDefinition>
