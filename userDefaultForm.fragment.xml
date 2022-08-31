@@ -1,0 +1,23 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form">
+	<Dialog title="Set Default Shipping Point" type="Message"  id="userDefaultDialog" stretch="{device>/system/phone}">
+		<tooltip></tooltip>
+		<!-- sap.ui.core.TooltipBase -->
+		<content>
+			<form:SimpleForm>
+				<Label text="Shipping Point" />
+				
+				<Input value="{clientModel>/ShipPoint}"  showSuggestion="true" showValueHelp="true"/>
+				
+				<Label text="Due Date" />
+				<DatePicker  required="true" dateValue="{clientModel>/DeliveryDate}" valueFormat="dd/MM/yyyy"  displayFormat="dd/MM/yyyy" />
+					
+				<Label text="Default Printer" />
+				
+				<Input value="{clientModel>/DefaultPrinter}"  showSuggestion="true" showValueHelp="true"/>
+			</form:SimpleForm>
+		</content>
+		<buttons>
+			<Button id="buttonConfirmDetails"  tooltip="Confirm" press="onConfirmDetails" type="Accept"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>
