@@ -1,0 +1,79 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form">
+	<Dialog title="Set Default Shipping Point" type="Message"  id="userDefaultDialog" >
+		<tooltip></tooltip>
+		<!-- sap.ui.core.TooltipBase -->
+		<content>
+			<form:SimpleForm>
+				<Label text="Shipping Point" />
+				
+				<Input   	value="{clientModel>/ShipPoint/value}"
+					showSuggestion="true"
+		autocomplete="false"
+		showValueHelp="true"
+		valueHelpRequest="handleValueHelpRequest"
+		suggestionRows="{/ZS2D_C_SHIP_POINT_VH}"
+		suggestionItemSelected="handleInputSuggestionItemSelected">
+						<suggestionColumns>
+				<Column>
+					<Label text="Shipping Point" />
+				</Column>
+				<Column demandPopin="true" minScreenWidth="Desktop">
+					<Label text="Shipping Point Desc" />
+				</Column>
+					<Column>
+						<Label text="ShipPointDesc" />
+					</Column>
+					</suggestionColumns>
+	<suggestionRows>
+				<ColumnListItem>
+					<Label text="{ShipPoint}"  wrapping="true"/>
+					<Label text="{ShipPointDesc}" wrapping="true" />
+				
+					</ColumnListItem>
+					</suggestionRows>
+				</Input>
+				
+				<Label text="Due Date" />
+				<DatePicker  required="true" value="{clientModel>/DefaultPrinter/value}" valueFormat="dd/MM/yyyy"  displayFormat="dd/MM/yyyy" />
+					
+				<Label text="Default Printer" />
+				
+				<Input value="{clientModel>/DeliveryDate/value}"
+				
+					showSuggestion="true"
+		autocomplete="false"
+		showValueHelp="true"
+		valueHelpRequest="handleValueHelpRequest"
+		suggestionRows="{/ZS2D_C_PRINTERVH}"
+		suggestionItemSelected="handleInputSuggestionItemSelected">
+						<suggestionColumns>
+				<Column>
+					<Label text="Printer" />
+				</Column>
+				<Column demandPopin="true" minScreenWidth="Desktop">
+					<Label text="Model" />
+				</Column>
+					<Column>
+						<Label text="Type" />
+					</Column>
+						<Column>
+						<Label text="Location" />
+					</Column>
+					</suggestionColumns>
+	<suggestionRows>
+				<ColumnListItem>
+					<Label text="{Printer}"  wrapping="true"/>
+					<Label text="{Model}" wrapping="true" />
+						<Label text="{Type}"  wrapping="true"/>
+					<Label text="{Location}" wrapping="true" />
+				
+					</ColumnListItem>
+					</suggestionRows>
+					</Input>
+			</form:SimpleForm>
+		</content>
+		<buttons>
+			<Button id="buttonConfirmDetails"  text="Confirm" press="onConfirmDetails" type="Accept"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,41 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout">
+	<l:HorizontalLayout  width="100%" 	class="sapUiSmallMarginTop">
+	<Input
+	
+	
+		textFormatMode="KeyValue"
+	  width="90%"
+	placeholder="Enter FO/STO/SO/OBD"
+		showSuggestion="true"
+		autocomplete="false"
+		showValueHelp="true"
+		change="handleInputChange"
+		value="{clientModel>/initialInput/value}"
+		valueHelpRequest="handleValueHelpRequest"
+		suggestionRows="{/ZS2D_C_LPI_MISC_VH}"
+		suggestionItemSelected="handleInputSuggestionItemSelected">
+		<suggestionColumns>
+				<Column>
+					<Label text="Doc. Number" />
+				</Column>
+				<Column demandPopin="true" minScreenWidth="Desktop">
+					<Label text="Ship to Party" />
+				</Column>
+					<Column>
+						<Label text="Object Type" />
+					</Column>
+					</suggestionColumns>
+	<suggestionRows>
+				<ColumnListItem>
+					<Label text="{DocumentNumber}"  wrapping="true"/>
+					<Label text="{CustomerName}" wrapping="true" />
+					<Label text="{OrderType}" wrapping="true" />
+					</ColumnListItem>
+					</suggestionRows>
+	</Input>
+	<Button icon="sap-icon://action-settings" press="onPressSetting" />
+	</l:HorizontalLayout>
+</core:FragmentDefinition>
